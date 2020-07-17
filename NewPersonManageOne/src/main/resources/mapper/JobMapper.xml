@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.psfd.springboot.dao.JobDao">
+    <resultMap id="JobMap" type="job">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="age" column="age"></result>
+        <result property="job" column="job"></result>
+        <result property="specialty" column="specialty"></result>
+        <result property="experience" column="experience"></result>
+        <result property="studyeffort" column="studyeffort"></result>
+        <result property="school" column="school"></result>
+        <result property="tel" column="tel"></result>
+        <result property="email" column="email"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="content" column="content"></result>
+        <result property="isstock" column="isstock"></result>
+    </resultMap>
+
+
+    <insert id="addJob">
+        insert into job(name,sex,age,job,specialty,experience,studyeffort,school,tel,email,createtime,content,isstock)
+        values(#{name},#{sex},#{age},#{job},#{specialty},#{experience},#{studyeffort},#{school},#{tel},#{email},#{createtime},#{content},#{isstock})
+    </insert>
+
+    <select id="queryAllJob" resultMap="JobMap">
+        select * from job where isstock=0
+    </select>
+
+    <delete id="deleteJob">
+        delete from job where id=#{id}
+    </delete>
+
+    <select id="queryJobById" resultMap="JobMap">
+        select * from job where id=#{id}
+    </select>
+
+    <update id="updateJobById">
+        update job set isstock=1 where id=#{id}
+    </update>
+
+    <select id="queryAllJobOne" resultMap="JobMap">
+        select * from job where isstock=1
+    </select>
+
+</mapper>

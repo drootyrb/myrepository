@@ -1,0 +1,78 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <link href="css/css.css" rel="stylesheet" type="text/css"/>
+    <script type="text/JavaScript">
+
+    </script>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+    <tr>
+        <td height="30">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td height="62" background="img/nav04.gif">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table id="subtree1" style="DISPLAY: block" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td height="20"><span class="newfont07">人才信息查看</span></td>
+                            </tr>
+                            <tr>
+                                <td height="40" class="font42">
+                                    <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646"
+                                           class="newfont03">
+                                        <tr class="CTitle">
+                                            <td height="22" colspan="8" align="center" style="font-size:16px">人才信息列表
+                                            </td>
+                                        </tr>
+                                        <tr bgcolor="#EEEEEE">
+                                            <td width="10%" align="center" height="30">姓名</td>
+                                            <td width="8%" align="center">性别</td>
+                                            <td width="10%" align="center">年龄</td>
+                                            <td width="23%" align="center">职位</td>
+                                            <td width="15%" align="center">所学专业</td>
+                                            <td width="16%" align="center">工作经验</td>
+                                            <td width="20%" align="center">执行操作</td>
+                                        </tr>
+
+
+                                        <tr bgcolor="#FFFFFF" th:each="jobTemp:${jobList}">
+                                            <td height="22" align="center" th:text="${jobTemp.name}"></td>
+                                            <td height="22" align="center" th:text="${jobTemp.sex==1?'男':'女'}">
+                                            </td>
+                                            <td height="22" align="center" th:text="${jobTemp.age}"></td>
+                                            <td height="22" align="center" th:text="${jobTemp.job}"></td>
+                                            <td height="22" align="center" th:text="${jobTemp.specialty}"></td>
+                                            <td height="22" align="center" th:text="${jobTemp.experience}"></td>
+                                            <td height="22" align="center"><a
+                                                    th:href="@{queryJobById(id=${jobTemp.id})}">详细</a><a
+                                                    th:href="@{deleteJob(id=${jobTemp.id})}">删除</a><a
+                                                    th:href="@{updateJobById(id=${jobTemp.id})}">入库</a>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr bgcolor="#FFFFFF">
+                                            <td height="22" colspan="7" align="center">对不起，没有信息！！！</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+</body>
+</html>

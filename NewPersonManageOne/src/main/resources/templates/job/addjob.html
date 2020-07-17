@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" rev="stylesheet" href="css/style.css " type="text/css" media="all"/>
+    <script type="text/javascript" src="js/typem.js"></script>
+    <script type="text/javascript" src="js/js.js"></script>
+</head>
+
+<body class="ContentBody">
+<form name="jobForm" method="post" action="" onSubmit="return jobValidate();">
+    <div class="MainDiv">
+        <table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
+            <tr>
+                <th class="tablestyle_title">应聘信息录入</th>
+            </tr>
+            <tr>
+                <td class="CPanel">
+
+                    <table border="0" cellpadding="0" cellspacing="0" style="width:80%" align="center">
+                        <tr>
+                            <td align="left">
+                                <input type="submit" value="保存" class="button"/>　
+
+                                <input type="reset" value="返回" class="button"/>
+                            </td>
+                        </tr>
+
+                        <TR>
+                            <TD width="100%">
+                                <fieldset style="height:100%;">
+                                    <legend>应聘信息</legend>
+                                    <table border="0" cellpadding="2" cellspacing="1" style="width:100%">
+                                        <tr>
+                                            <td nowrap align="right" width="9%">姓名：</td>
+                                            <td width="36%"><input name="name" type="text" class="input" id="name">
+                                                <span class="red">*</span></td>
+                                            <td width="12%">
+                                                <div align="right">性别：</div>
+                                            </td>
+                                            <td width="43%">
+                                                <input name="sex" type="radio" value="1" checked class="sex">男
+                                                <input name="sex" type="radio" value="0" class="sex">女
+                                        </tr>
+                                        <tr>
+                                            <td nowrap align="right" width="9%">年龄：</td>
+                                            <td><input name="age" type="text" class="input" id="age"></td>
+                                            <td>
+                                                <div align="right">职位：</div>
+                                            </td>
+                                            <td><input name="job" type="text" class="input" id="job">
+                                                <span class="red">*</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap align="right">所学专业：</td>
+                                            <td><input name="specialty" type="text" class="input" id="specialty">
+                                                <span class="red">*</span></td>
+                                            <td>
+                                                <div align="right">工作经验：</div>
+                                            </td>
+                                            <td><input name="experience" type="text" class="input" id="experience">
+                                                <span class="red">*</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap align="right">学历：</td>
+                                            <td><input name="studyeffort" type="text" class="input" id="studyeffort">
+                                                <span class="red">*</span></td>
+                                            <td>
+                                                <div align="right">毕业学校：</div>
+                                            </td>
+                                            <td><input name="school" type="text" class="input" id="school">
+                                                <span class="red">*</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap align="right">电话：</td>
+                                            <td><input name="tel" type="text" class="input" id="tel">
+                                                <span class="red">*</span></td>
+                                            <td>
+                                                <div align="right">Email：</div>
+                                            </td>
+                                            <td><input name="email" type="text" class="input" id="email">
+                                                <span class="red">*</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="9%" nowrap align="right">详细经历：</td>
+                                            <td colspan="3">
+					<textarea name="content" cols="100" rows="6" class="input" id="content">
+					</textarea></td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                            </TD>
+
+                        </TR>
+                    </TABLE>
+                </td>
+            </tr>
+            <TR>
+                <TD colspan="2" align="center" height="50px">
+                    <input name="提交" type="button" class="button" value="保存" id="inputsubmit"/>　
+
+                    <input name="重置" type="reset" class="button" value="重置"/></TD>
+            </TR>
+        </TABLE>
+    </div>
+</form>
+</body>
+<script src="js/jquery-3.4.1.min.js">
+
+</script>
+<script>
+    $("#inputsubmit").click(function () {
+        $.post("addJob", {
+            "name": $("#name").val(),
+            "sex": $(".sex").val(),
+            "age": $("#age").val(),
+            "job": $("#job").val(),
+            "specialty": $("#specialty").val(),
+            "studyeffort": $("#studyeffort").val(),
+            "experience":$("#experience").val(),
+            "school": $("#school").val(),
+            "tel": $("#tel").val(),
+            "email": $("#email").val(),
+            "content": $("#content").val()
+        }, function (data) {
+            console.log(data);
+            alert(data);
+        })
+    })
+</script>
+
+</html>

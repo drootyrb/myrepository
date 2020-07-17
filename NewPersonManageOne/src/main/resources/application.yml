@@ -1,0 +1,13 @@
+server:
+  servlet:
+    context-path: /boot
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_hr1?serverTimezone=UTC
+    username: root
+    password: 123456abc
+
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.psfd.springboot.domain
